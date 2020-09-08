@@ -18,10 +18,12 @@
          
       </div>
     </div>
+    <Footer />
   </div>
 </template>
 <script>
 import Nav from '../components/Nav'
+import Footer from '../components/Footer'
 import CarteTour from '../components/CarteTour'
 import { db } from '../firebase';
 
@@ -31,6 +33,7 @@ export default {
   
   components:{
     Nav,
+    Footer,
     CarteTour
     
   },

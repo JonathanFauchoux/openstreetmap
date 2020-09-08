@@ -4,17 +4,21 @@
       <Nav msg="Welcome to Your Vue.js App"/> 
     </div>
     <h1>Home</h1>
-    <p>Bonjour {{this.user}}</p>
+    <p>Bonjour <strong>{{this.user}}</strong></p>
     <div class="homeTitle">
-      <h4>titre du paragraphe</h4>
-    <p>Un text pour presenter le but du site</p>
+      <img src="https://images.unsplash.com/photo-1567004314453-ed46f03527fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=911&q=80" alt="image">
+      <div class="homeTitle_text">
+        <h4>Titre du paragraphe</h4>
+        <p>Un text pour presenter le but du site. This is the end of the tutorial. I do hope you’ve enjoyed what you learned here: building a live map with Vue.js, Leaflet and Pusher Channels. The knowledge acquired here can help you achieve more astonishing things. You can get the full source</p>
+      </div>
     </div>
-    
+    <Footer />
   </div>
 </template>
 
 <script>
 import Nav from '@/components/Nav.vue'
+import Footer from '@/components/Footer.vue'
 
 
 
@@ -27,9 +31,9 @@ export default {
     }
   },
   components: {
-    Nav
-  /*  Login,
-   SignUp */
+    Nav,
+    Footer
+  
   },
   created(){
     this.user = this.$route.params.user || localStorage.getItem('username')
@@ -47,10 +51,26 @@ export default {
     padding-top: 2rem;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    h4{
-      font-size: 1.5rem;
+    flex-direction: row;
+    justify-content: space-around;
+    img{
+      width: 50%;
+      height: 300px;
+      object-fit: cover;
+    }
+    &_text{
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding-left: 1rem;
+      h4{
+        font-size: 2rem;
+      }
+      p{
+        text-align: start;
+      }
     }
   }
 }

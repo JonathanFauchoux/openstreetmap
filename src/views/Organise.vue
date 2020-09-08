@@ -48,12 +48,14 @@
         class="item" 
             :key="index" ><strong>Marker {{index +1 }} :</strong> Coordonées / Latitude:{{marker.lat}}   Longitude:{{marker.lng}}</li>
       </ul>
+       <Footer />
     </div>
 
   </div>
 </template>
 <script>
 import Nav from '../components/Nav'
+import Footer from '../components/Footer'
 import { latLng } from "leaflet";
 import { LMap, LTileLayer, LMarker } from "vue2-leaflet";
 import { Icon } from 'leaflet';
@@ -66,6 +68,7 @@ export default {
   
   components:{
     Nav,
+    Footer,
     LMap,
     LTileLayer,
     LMarker,
@@ -173,7 +176,7 @@ width: 100%
   #maCarte{
     padding:1rem;
     width: 90%;
-    border: 1px solid red;
+   
   }
   l-map{
     height: 50%;
