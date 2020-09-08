@@ -25,7 +25,7 @@
         <b-button @click="signUp">S'inscrire</b-button>
         <br>
         <br>
-        <p>Dejà inscrit ? <router-link to="/login">Se connecter</router-link></p>
+        <p>Dejà inscrit ? <router-link to="/">Se connecter</router-link></p>
 
         <ul class="reptileList">
           <li v-for="user in users" :key=user.name >
