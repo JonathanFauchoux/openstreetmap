@@ -48,7 +48,7 @@ export default {
   align-items: center;
   justify-content: center;
   .homeTitle{
-    padding-top: 2rem;
+    padding: 2rem;
     width: 100%;
     display: flex;
     flex-direction: row;
