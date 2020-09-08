@@ -104,6 +104,8 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  border-radius: 15px;
+  box-shadow: 3px 3px 10px 1px #282c34;
 }
 .tourTitle{
   width: 80%;
@@ -125,9 +127,12 @@ export default {
     padding: .5rem;
     margin-bottom: 2rem;
   }
-  
+  .tour{
+    align-items: flex-start;
+  }
    .tourTitle{
      align-items: center;
+     justify-content: flex-start;
      h3{
        text-align: start;
        font-size: 1.2rem;

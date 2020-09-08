@@ -64,7 +64,7 @@ export default {
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
-      padding-left: 1rem;
+      padding: 0 2rem  ;
       h4{
         font-size: 2rem;
       }
@@ -84,7 +84,7 @@ export default {
     }
     &_text{
       width: 100% !important;
-      padding-top: 2rem;
+      padding-top: 2rem !important;
     }
   }
 }

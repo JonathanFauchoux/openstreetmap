@@ -138,8 +138,9 @@ export default {
 <style lang="scss">
 
 #maCarte{
-  height: 600px;
-  
+  height: 800px;
+  width: 100%;
+  padding: 2rem;
 }
 .headerMap{
   display: flex;
@@ -165,7 +166,7 @@ export default {
   }
 }
 .innerTour{
-height: 400px;
+height: 600px;
 width: 100%
 }
 
@@ -175,7 +176,7 @@ width: 100%
   }
   #maCarte{
     padding:1rem;
-    width: 90%;
+    width: 100%;
    
   }
   l-map{

@@ -14,6 +14,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="css">
 footer{
+  z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
