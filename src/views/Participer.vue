@@ -124,7 +124,7 @@ export default {
 @media screen and (max-width: 900px){
   .liste-tour{
     width: 100%;
-    padding: .5rem;
+    padding: 1rem;
     margin-bottom: 2rem;
   }
   .tour{
