@@ -29,11 +29,9 @@
 
         <ul class="reptileList">
           <li v-for="user in users" :key=user.name >
-        {{ user.name }} -
-        
-     
-      </li>
-    </ul>
+            {{ user.name }}
+          </li>
+        </ul>
  
      </div>
        
@@ -82,6 +80,7 @@ export default {
          })
           localStorage.setItem("username", this.name);
           this.$router.push({name: "Home", params:{user : this.name}})
+          this.$router.push('/home')
         },
         err => {
           console.log(err)
