@@ -74,4 +74,18 @@ export default {
     }
   }
 }
+@media only screen and (max-width: 900px){
+  .homeTitle{
+    padding: 1rem !important;
+    flex-direction: column !important;
+    img{
+      width: 100% !important;
+      
+    }
+    &_text{
+      width: 100% !important;
+      padding-top: 2rem;
+    }
+  }
+}
 </style>

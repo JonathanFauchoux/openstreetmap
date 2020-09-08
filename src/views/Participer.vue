@@ -119,4 +119,24 @@ export default {
     font-size: 1.2rem;
   }
 }
+@media screen and (max-width: 900px){
+  .liste-tour{
+    width: 100%;
+    padding: .5rem;
+    margin-bottom: 2rem;
+  }
+  
+   .tourTitle{
+     align-items: center;
+     h3{
+       text-align: start;
+       font-size: 1.2rem;
+       padding-right: 1rem;
+     }
+     p{
+       font-size: .9rem;
+       text-align: start;
+     }
+   }
+}
 </style>

@@ -30,7 +30,5 @@ footer .title{
   font-size: .8rem;
 }
 
-@media screen and (min-width: 768px){
-   
-}
+
 </style> >

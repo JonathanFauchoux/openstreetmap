@@ -52,7 +52,13 @@ h1{
   font-size: 3rem !important;
   text-transform: uppercase;
 }
+
 b-button{
   color: white !important;
+}
+@media screen and (max-width: 900px){
+   h1{
+     font-size: 2rem !important;
+   }
 }
 </style>
