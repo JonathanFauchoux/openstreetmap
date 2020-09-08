@@ -54,7 +54,7 @@ export default {
       .then(
         user => {
           console.log(user)
-          this.$router.push('/')
+          this.$router.push('/home')
         },
         err => {
           console.log(err)

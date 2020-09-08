@@ -10,7 +10,7 @@
         </template>
         <template slot="start">
             <b-navbar-item href="#">
-               <router-link to="/">Home</router-link>
+               <router-link to="/home">Home</router-link>
       
             </b-navbar-item>
             <b-navbar-item href="#">
