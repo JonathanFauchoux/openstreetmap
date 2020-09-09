@@ -79,7 +79,7 @@ export default {
     return {
       currentTour : this.tour,
       date : new Date(),
-      zoom: 16,
+      zoom: 12,
       center: latLng(50.471156, 4.42841),
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
