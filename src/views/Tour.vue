@@ -122,7 +122,7 @@ export default {
    methods: {
     checkMarker(){
       for(let i=0; i < this.markers.length; i++){
-        if( (this.markers[i].lat).toFixed(5) == (this.UserPositionLat).toFixed(5) && (this.markers[i].lng).toFixed(5) == (this.UserPositionLng).toFixed(5)){
+        if( (this.markers[i].lat).toFixed(4) == (this.UserPositionLat).toFixed(4) && (this.markers[i].lng).toFixed(4) == (this.UserPositionLng).toFixed(4)){
           console.log('true')
           console.log((this.markers[0].lat).toFixed(5))
           this.$buefy.notification.open('Marker validé')
