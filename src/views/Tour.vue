@@ -15,8 +15,8 @@
           
           <div class="innerTour"  >
         <div class="headerMap">
-          <p><strong>Le centre de la carte se trouve : </strong> {{ currentCenter }} niveau de zoom: {{ currentZoom }}</p>
-          <p><strong>Votre position : </strong> {{ this.userPosition }}</p>
+          <p><strong>Le centre de la carte se trouve : </strong> {{ currentCenter }} <strong>niveau de zoom :</strong> {{ currentZoom }}</p>
+          
         </div>
         <l-map
           :zoom="zoom"
@@ -24,7 +24,7 @@
           style="height: 100%"
           @update:center="centerUpdate"
           @update:zoom="zoomUpdate"
-
+          @update:userPosition="userPositionUpdate"
           >
 
           <l-tile-layer
@@ -49,11 +49,9 @@
             </l-marker>
 
         </l-map>
+        <p><strong>Votre position : </strong> {{ this.userPosition }}</p>
         <ul class="listMarkers">
-          <li v-for="(marker, index) in this.markers"
-          class="item" 
-            :key="index" ><strong>Marker {{index +1 }} :</strong> Coordonées / Latitude:{{marker.lat}}   Longitude:{{marker.lng}}
-          </li>
+
           <li>
             <div class="buttons validBtn" >
               <a class="button is-primary">
@@ -61,6 +59,12 @@
               </a>
             </div>
           </li>
+
+          <li v-for="(marker, index) in this.markers"
+          class="item" 
+            :key="index" ><strong>Marker {{index +1 }} :</strong> Coordonées / Latitude:{{marker.lat}}   Longitude:{{marker.lng}}
+          </li>
+          
       </ul>
       </div>
       
@@ -119,6 +123,9 @@ export default {
     }
   },
    methods: {
+     userPositionUpdate(userPosition){
+       this.userPosition = userPosition
+     },
     zoomUpdate(zoom) {
       this.currentZoom = zoom;
     },
@@ -171,7 +178,7 @@ export default {
 .leaflet-container{
  
   height: 60% !important;
-  margin: 2rem 0;
+  margin: 0 0 2rem 0 ;
 }
 .tour{
   width: 100%;
@@ -184,7 +191,7 @@ export default {
 
   border: 1px solid hsl(271, 100%, 71%);
   margin: 1rem 0;
-  padding: .5rem;
+  padding: 1rem;
  
   display: flex;
   flex-direction: column;

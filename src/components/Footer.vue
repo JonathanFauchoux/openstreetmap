@@ -15,7 +15,7 @@ export default {
 <style lang="css">
 footer{
   z-index: 9999;
-    display: flex;
+    display: flex !important;
     justify-content: center;
     align-items: center;
   
