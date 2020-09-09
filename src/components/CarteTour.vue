@@ -37,12 +37,15 @@
        
           </l-marker>
         </l-map>
-        <div class="buttons" @click="jeParticipe()">
-        <a class="button is-primary">
-            <strong>Je participe</strong>
-        </a>
-      </div>
+         <div class="buttons participeBtn" @click="jeParticipe()">
+              <a class="button is-primary">
+                <strong>Je participe</strong>
+              </a>
+            </div>
         <ul class="listMarkers">
+          <li>
+           
+          </li>
         <li v-for="(marker, index) in markers"
         class="item" 
             :key="index" ><strong>Marker {{index +1 }} :</strong> Coordonées / Latitude:{{marker.lat}}   Longitude:{{marker.lng}}</li>
@@ -169,7 +172,7 @@ width: 100%
   width: 100%;
   height: auto;
   
-  margin-top: -5rem;
+  margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -181,14 +184,17 @@ width: 100%
   }
   
 }
-
+.participeBtn{
+  display: flex;
+  justify-content: center;
+}
 .showTour{
   position: relative;
   top: -35px;
   left: 40%;
 }
 .leaflet-container{
-  margin-bottom: 6rem;
+  margin-bottom: 2rem;
 }
 
 </style>
