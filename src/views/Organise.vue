@@ -122,7 +122,7 @@ export default {
         created_at : this.date
       })
       
-      
+      this.$buefy.notification.open('Parcours enregistré')
       this.markers = []
     },
     maPosition(position) {

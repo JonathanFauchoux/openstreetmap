@@ -24,7 +24,7 @@
           style="height: 100%"
           @update:center="centerUpdate"
           @update:zoom="zoomUpdate"
-          @change:userPosition="userPositionUpdate"
+          
           >
 
           <l-tile-layer
@@ -54,7 +54,7 @@
 
           <li>
             <div class="buttons validBtn" >
-              <a class="button is-primary">
+              <a class="button is-primary" @click="this.checkMarker">
                   <strong>Valider marker</strong>
               </a>
             </div>
@@ -100,7 +100,9 @@ export default {
     return {
       
       userPosition:[50.471156, 4.42841],
-      currentUserPosition: [50.471156, 4.42841],
+      UserPositionLat: 50.471156,
+      UserPositionLng : 4.42841,
+
       user : localStorage.getItem("username"),
       show: false,
       currentTour : {},
@@ -114,23 +116,35 @@ export default {
       showParagraph: false,
       markers: [],
       
-      greenIcon : new Icon({
-        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41]
-      })
+      
     }
   },
    methods: {
-     userPositionUpdate(){
-       setInterval(()=>{
-         if(navigator.geolocation) navigator.geolocation.getCurrentPosition(this.maPosition)
-         console.log('setinterval position', this.userPosition)
-       }, 3000)
-     },
+    checkMarker(){
+      for(let i=0; i < this.markers.length; i++){
+        if( (this.markers[i].lat).toFixed(5) == (this.UserPositionLat).toFixed(5) && (this.markers[i].lng).toFixed(5) == (this.UserPositionLng).toFixed(5)){
+          console.log('true')
+          console.log((this.markers[0].lat).toFixed(5))
+          this.$buefy.notification.open('Marker validé')
+          this.markers.splice(this.markers[i],1)
+          if(this.markers.length == 0){ console.log("le tour est fini")}
+          
+        }
+        else{
+          console.log('false')
+          this.$buefy.notification.open('Vous etes trop loin du marker').stop
+         // console.log(this.markers[0].lat)
+        }
+      }
+      
+    },
+    userPositionUpdate(){
+      setInterval(()=>{
+        if(navigator.geolocation) navigator.geolocation.getCurrentPosition(this.maPosition)
+        
+      
+      }, 3000)
+    },
     zoomUpdate(zoom) {
       this.currentZoom = zoom;
     },
@@ -139,8 +153,9 @@ export default {
     },
     maPosition(position) {
       this.userPosition = [position.coords.latitude, position.coords.longitude]
-      console.log("thisuserposition",this.userPosition)
-      
+     // console.log("thisuserposition",this.userPosition)
+      this.UserPositionLat = position.coords.latitude 
+      this.UserPositionLng = position.coords.longitude
       this.center = latLng(position.coords.latitude, position.coords.longitude)
       this.currentCenter = latLng(position.coords.latitude, position.coords.longitude)
     }
@@ -162,11 +177,14 @@ export default {
     iconUrl: require('leaflet/dist/images/marker-icon.png'),
     shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
     });
-  //marker([51.5, -0.09], {Icon: greenIcon}).addTo(map);
+  
     this.currentTour = JSON.parse(localStorage.getItem('Tour'))
     this.markers = JSON.parse(this.currentTour.markers)
-    //console.log('data recu',this.currentTour.markers)
+    
      this.userPositionUpdate()
+  },
+  Destroyed(){
+     if(this.$router.currentRoute.fullPath !=='/tour'){ clearInterval(this.userPositionUpdate);}
   }
 }
 </script>
