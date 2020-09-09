@@ -6,11 +6,9 @@
 
     <h1>C'est parti pour un Tour</h1>
 
-   
       <div class="tour">
         <div class="tourTitle">
           <h3>Tour de : {{this.currentTour.user}}</h3> 
-          <p> fait à : {{this.currentTour.created_at | heure(this.currentTour.created_at)}}</p>
         </div>
           
           <div class="innerTour"  >
@@ -65,6 +63,11 @@
             :key="index" ><strong>Marker {{index +1 }} :</strong> Coordonées / Latitude:{{marker.lat}}   Longitude:{{marker.lng}}
           </li>
           
+          <li class="theEnd" v-if="this.markers.length == 0">
+              <h2 class="title"> Parcours fini !</h2>
+              <img src="https://images.unsplash.com/photo-1436076863939-06870fe779c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="image victoire">
+          </li>
+
       </ul>
       </div>
       
@@ -141,8 +144,6 @@ export default {
     userPositionUpdate(){
       setInterval(()=>{
         if(navigator.geolocation) navigator.geolocation.getCurrentPosition(this.maPosition)
-        
-      
       }, 3000)
     },
     zoomUpdate(zoom) {
@@ -163,8 +164,9 @@ export default {
   filters:{
       heure(value) {
         let time = new Date(value*1000)
+        console.log
       //return time.getHours()+":"+time.getMinutes()
-      return time.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit', second: '2-digit'})
+      return time.toLocaleTimeString('fr-FR', {day: '2-digit',month: '2-digit',hour: '2-digit', minute:'2-digit', second: '2-digit'})
       }
   },
   created(){
@@ -180,7 +182,7 @@ export default {
   
     this.currentTour = JSON.parse(localStorage.getItem('Tour'))
     this.markers = JSON.parse(this.currentTour.markers)
-    
+    console.log(this.currentTour)
      this.userPositionUpdate()
   },
   Destroyed(){
@@ -263,6 +265,12 @@ export default {
   justify-content: center !important;
   padding: 1rem 0;
 }
+.theEnd{
+  img{
+    width: 20%;
+    padding-bottom: 2rem;
+  }
+}
 @media screen and (max-width: 900px){
   .liste-tour{
     width: 100%;
@@ -285,5 +293,12 @@ export default {
        text-align: start;
      }
    }
+   .theEnd{
+     padding-top: 1rem;
+  img{
+    width: 80%;
+    padding-bottom: 2rem;
+  }
+}
 }
 </style>

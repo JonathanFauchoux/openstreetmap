@@ -10,7 +10,7 @@
       <div class="innerTour">
         <div class="headerMap">
           
-          <p>Le centre de la carte se trouve : {{ currentCenter }} niveau de zoom: {{ currentZoom }}</p>
+          <p><strong>Centre de la carte : </strong> {{ currentCenter }} -<strong>zoom : </strong> {{ currentZoom }}</p>
         </div>
         <l-map
         
@@ -153,12 +153,15 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" >
 
 #maCarte{
-  height: 800px;
   width: 100%;
-  padding: 2rem;
+  height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 2rem;
 }
 .headerMap{
   display: flex;

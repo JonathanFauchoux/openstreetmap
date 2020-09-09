@@ -10,7 +10,7 @@
       <div class="innerTour"  >
         <div class="headerMap">
           
-          <p>Le centre de la carte se trouve : {{ currentCenter }} niveau de zoom: {{ currentZoom }}</p>
+          <p><strong>Centre de la carte : </strong>{{ currentCenter }} <strong>- Zoom: </strong> {{ currentZoom }}</p>
         </div>
         <l-map
         
@@ -83,7 +83,7 @@ export default {
       center: latLng(50.471156, 4.42841),
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      currentZoom: 9,
+      currentZoom: 10,
       currentCenter: latLng(50.471156, 4.42841),
       showParagraph: false,
       markers: JSON.parse(this.tour.markers),

@@ -10,7 +10,7 @@
       <div class="tour" v-for="(tour, index) in this.tours" :key="index" >
         <div class="tourTitle">
           <h3>Tour de : {{tour.user}}</h3> 
-          <p> fait à : {{tour.created_at | heure(tour.created_at)}}</p>
+          <p> Fait le :{{tour.created_at | heure(tour.created_at)}}</p>
         </div>
           <CarteTour :tour="tour"/>
           
@@ -34,7 +34,6 @@ export default {
     Nav,
     Footer,
     CarteTour
-    
   },
   firestore() {
     return {
@@ -42,26 +41,21 @@ export default {
     }
   },
   data() {
-    return {
-      
-      
+    return {  
       user : localStorage.getItem("username")
     };
   },
    methods: {
-   
-    
-    
   },
   filters:{
       heure(value) {
         let time = new Date(value*1000)
       //return time.getHours()+":"+time.getMinutes()
-      return time.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit', second: '2-digit'})
+      return time.toLocaleTimeString('fr-FR', {day: '2-digit',month: '2-digit',hour: '2-digit', minute:'2-digit', second: '2-digit'})
       }
   },
   created(){
-    //console.log(this.tours)
+    console.log(this.tours)
   }
 }
 </script>
@@ -109,7 +103,8 @@ export default {
 .tourTitle{
   width: 80%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start !important;
   justify-content: flex-start;
   padding-top: 2rem;
   h3{
@@ -118,6 +113,8 @@ export default {
   }
   p{
     font-size: 1.2rem;
+    display: flex;
+    align-items: flex-end;
   }
 }
 @media screen and (max-width: 900px){
@@ -134,7 +131,7 @@ export default {
      justify-content: flex-start;
      h3{
        text-align: start;
-       font-size: 1.2rem;
+       font-size: 1.5rem;
        padding-right: 1rem;
      }
      p{
