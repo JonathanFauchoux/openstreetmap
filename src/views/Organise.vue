@@ -75,19 +75,21 @@ export default {
   },
   data() {
     return {
+      userPosition:{},
       date : new Date(),
+      center: latLng(50.471177, 4.429969),
       zoom: 16,
-      center: latLng(50.471156, 4.42841),
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       currentZoom: 9,
-      currentCenter: latLng(50.471156, 4.42841),
+      currentCenter: latLng(50.471177, 4.429969),
       showParagraph: false,
       markers: [
-        latLng(50.471156, 4.42841), 
+        latLng(50.471177, 4.429969), 
       ],
-      user : localStorage.getItem("username")
+      user : localStorage.getItem("username"),
+      
     };
   },
    methods: {
@@ -122,7 +124,21 @@ export default {
       
       localStorage.setItem('Tour',  JSON.stringify(newTour))
       this.markers = []
+    },
+    maPosition(position) {
+      this.userPosition = {lat: position.coords.latitude, lng: position.coords.longitude} 
+      console.log("thisuserposition",this.userPosition.lng)
+      this.markers= [
+        latLng(position.coords.latitude, position.coords.longitude), 
+      ]
+      this.center = latLng(position.coords.latitude, position.coords.longitude)
+      this.currentCenter = latLng(position.coords.latitude, position.coords.longitude)
     }
+  },
+  mounted(){
+    if(navigator.geolocation)
+    navigator.geolocation.getCurrentPosition(this.maPosition)
+    console.log("maposition", this.userPosition)
   },
   created(){
     delete Icon.Default.prototype._getIconUrl;
@@ -131,6 +147,8 @@ export default {
     iconUrl: require('leaflet/dist/images/marker-icon.png'),
     shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
     });
+    
+    
   }
 }
 </script>

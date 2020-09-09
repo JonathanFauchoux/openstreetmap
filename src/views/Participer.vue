@@ -12,10 +12,7 @@
           <h3>Tour de : {{tour.user}}</h3> 
           <p> fait à : {{tour.created_at | heure(tour.created_at)}}</p>
         </div>
-          
-         
-            <CarteTour :tour="tour"/>
-         
+          <CarteTour :tour="tour"/>
       </div>
     </div>
     <Footer />

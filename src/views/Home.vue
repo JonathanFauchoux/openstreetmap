@@ -5,6 +5,7 @@
     </div>
     <h1>Home</h1>
     <p>Bonjour <strong>{{this.user}}</strong></p>
+    <div id="infoposition">{{this.userPosition}}</div>
     <div class="homeTitle">
       <img src="https://images.unsplash.com/photo-1567004314453-ed46f03527fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=911&q=80" alt="image">
       <div class="homeTitle_text">
@@ -27,7 +28,8 @@ export default {
   
   data(){
     return{
-      user: ""
+      user: "",
+      userPosition:""
     }
   },
   components: {
@@ -35,8 +37,21 @@ export default {
     Footer
   
   },
+  methods:{ 
+    maPosition(position) {
+      let infopos = "Votre position :\n";
+      infopos += "Latitude : "+position.coords.latitude +"\n";
+      infopos += "Longitude: "+position.coords.longitude+"\n";
+    
+      document.getElementById("infoposition").innerHTML = infopos;
+    }
+
+  },
   created(){
     this.user = this.$route.params.user || localStorage.getItem('username')
+
+    if(navigator.geolocation)
+    this.userPosition = navigator.geolocation.getCurrentPosition(this.maPosition)
   }
 }
 </script>
