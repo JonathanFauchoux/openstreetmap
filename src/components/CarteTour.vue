@@ -1,7 +1,7 @@
 <template>
   <div class="opencarte">
     <div class="buttons showTour" @click="showTour()" >
-        <a class="button is-primary">
+        <a class="button is-primary is-outlined">
             <strong>Voir ce tour</strong>
         </a>
       </div>

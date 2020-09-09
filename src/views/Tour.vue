@@ -128,14 +128,14 @@ export default {
         if( (this.markers[i].lat).toFixed(4) == (this.UserPositionLat).toFixed(4) && (this.markers[i].lng).toFixed(4) == (this.UserPositionLng).toFixed(4)){
           console.log('true')
           console.log((this.markers[0].lat).toFixed(5))
-          this.$buefy.notification.open('Marker validé')
+          this.$buefy.toast.open({type: "is-success" ,message : 'Marker validé !'})
           this.markers.splice(this.markers[i],1)
           if(this.markers.length == 0){ console.log("le tour est fini")}
           
         }
         else{
           console.log('false')
-          this.$buefy.notification.open('Vous etes trop loin du marker').stop
+          this.$buefy.toast.open({type: "is-danger" ,message : 'Trop loin du marker'}).stop
          // console.log(this.markers[0].lat)
         }
       }
@@ -245,7 +245,11 @@ export default {
   width: 90%;
   padding: 2rem;
 }
-
+.media  {
+    width: 100% !important;
+    background-color: red !important;
+    border: 2px solid red;
+}
 .tourTitle{
   width: 80%;
   display: flex;
