@@ -24,7 +24,7 @@
           style="height: 100%"
           @update:center="centerUpdate"
           @update:zoom="zoomUpdate"
-          @update:userPosition="userPositionUpdate"
+          @change:userPosition="userPositionUpdate"
           >
 
           <l-tile-layer
@@ -98,7 +98,9 @@ export default {
   },
   data() {
     return {
+      
       userPosition:[50.471156, 4.42841],
+      currentUserPosition: [50.471156, 4.42841],
       user : localStorage.getItem("username"),
       show: false,
       currentTour : {},
@@ -123,8 +125,11 @@ export default {
     }
   },
    methods: {
-     userPositionUpdate(userPosition){
-       this.userPosition = userPosition
+     userPositionUpdate(){
+       setInterval(()=>{
+         if(navigator.geolocation) navigator.geolocation.getCurrentPosition(this.maPosition)
+         console.log('setinterval position', this.userPosition)
+       }, 3000)
      },
     zoomUpdate(zoom) {
       this.currentZoom = zoom;
@@ -161,6 +166,7 @@ export default {
     this.currentTour = JSON.parse(localStorage.getItem('Tour'))
     this.markers = JSON.parse(this.currentTour.markers)
     //console.log('data recu',this.currentTour.markers)
+     this.userPositionUpdate()
   }
 }
 </script>
