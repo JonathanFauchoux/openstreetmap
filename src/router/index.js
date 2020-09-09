@@ -5,6 +5,7 @@ import Login  from '../views/Login.vue'
 import SignUp  from '../views/SignUp.vue'
 import Organise from '../views/Organise.vue'
 import Participer from '../views/Participer.vue'
+import Tour from '../views/Tour.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ Vue.use(VueRouter)
     path: '/participer',
     name: 'Participer',
     component: Participer
+  },
+  {
+    path: '/tour',
+    name: 'Tour',
+    component: Tour
   },
  /*  {
     path: '/about',

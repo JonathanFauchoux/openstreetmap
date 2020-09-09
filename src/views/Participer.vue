@@ -13,7 +13,9 @@
           <p> fait à : {{tour.created_at | heure(tour.created_at)}}</p>
         </div>
           <CarteTour :tour="tour"/>
+          
       </div>
+      
     </div>
     <Footer />
   </div>
@@ -59,7 +61,7 @@ export default {
       }
   },
   created(){
-    console.log(this.tours)
+    //console.log(this.tours)
   }
 }
 </script>

@@ -21,14 +21,7 @@
                 <router-link to="/participer">Participer</router-link>
             </b-navbar-item>
 
-            <!-- <b-navbar-dropdown label="Role">
-                <b-navbar-item href="#">
-                    Organisateur
-                </b-navbar-item>
-                <b-navbar-item href="#">
-                    Participant
-                </b-navbar-item>
-            </b-navbar-dropdown> -->
+            
         </template>
 
         <template slot="end" class="right">

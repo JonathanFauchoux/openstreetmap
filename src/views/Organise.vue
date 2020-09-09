@@ -122,7 +122,7 @@ export default {
         created_at : this.date
       })
       
-      localStorage.setItem('Tour',  JSON.stringify(newTour))
+      
       this.markers = []
     },
     maPosition(position) {
@@ -173,6 +173,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 4rem;
   h1{
     margin-bottom: 2rem;
   }

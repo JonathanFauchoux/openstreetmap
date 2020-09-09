@@ -20,7 +20,7 @@
           style="height: 100%"
           @update:center="centerUpdate"
           @update:zoom="zoomUpdate"
-          @click="addMarker"
+          
           >
 
           <l-tile-layer
@@ -32,22 +32,23 @@
             v-for="(marker, index) in markers" 
             :key="index" 
             :lat-lng="marker" 
-            @click="removeMarker(index)"
+            
             >
        
           </l-marker>
         </l-map>
+        <div class="buttons" @click="jeParticipe()">
+        <a class="button is-primary">
+            <strong>Je participe</strong>
+        </a>
+      </div>
         <ul class="listMarkers">
         <li v-for="(marker, index) in markers"
         class="item" 
             :key="index" ><strong>Marker {{index +1 }} :</strong> Coordonées / Latitude:{{marker.lat}}   Longitude:{{marker.lng}}</li>
       </ul>
       </div>
-      <!-- <div class="buttons" @click="addTour()" >
-        <a class="button is-primary">
-            <strong>Créer le tour</strong>
-        </a>
-      </div> -->
+      
       
     </div>
   </div>
@@ -73,7 +74,7 @@ export default {
   },
   data() {
     return {
-      
+      currentTour : this.tour,
       date : new Date(),
       zoom: 16,
       center: latLng(50.471156, 4.42841),
@@ -88,6 +89,12 @@ export default {
     };
   },
    methods: {
+     jeParticipe () {
+    // this.$router.push({name:"Tour", params:{tour : this.currentTour}})
+     localStorage.setItem('Tour',  JSON.stringify(this.currentTour))
+     this.$router.push('/tour')
+     console.log('data', this.currentTour)
+   },
     zoomUpdate(zoom) {
       this.currentZoom = zoom;
     },
@@ -96,19 +103,19 @@ export default {
     },
     showTour(){
       this.show = !this.show
-      console.log(this.show)
+     // console.log(this.show)
     },
     removeMarker(index) {
       this.markers.splice(index, 1);
     },
     addMarker(event) {
       this.markers.push(event.latlng);
-      console.log(this.markers)
+      //console.log(this.markers)
     },
     addTour(){
       let newTour = {user: this.user, markers: this.markers}
       let markersString = JSON.stringify(this.markers)
-      console.log(newTour)
+      //console.log(newTour)
       db.collection('Tour').add({
         user: this.user,
         markers: markersString,
@@ -126,7 +133,7 @@ export default {
     iconUrl: require('leaflet/dist/images/marker-icon.png'),
     shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
     });
-    console.log(JSON.parse(this.tour.markers))
+    //console.log(JSON.parse(this.tour.markers))
   }
 }
 </script>
