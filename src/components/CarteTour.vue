@@ -168,7 +168,7 @@ width: 100%
   flex-wrap: wrap;
   justify-content: center;
   .item{
-    text-align: center;
+    text-align: start;
     width: 50%;
     font-size: 0.9rem;
     padding-bottom: .4rem;
