@@ -199,6 +199,7 @@ width: 100%
   #maCarte{
     padding:1rem;
     width: 100%;
+    justify-content: flex-start !important;;
    
   }
   l-map{
