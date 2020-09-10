@@ -2,23 +2,28 @@
    <section class="section signUp">
      <div class="form">
         <h2 class="titleLog"> S'inscrire</h2>
-         <b-field label="Name">
-            <b-input type="text" v-model="name"></b-input>
+         <b-field label="Nom">
+            <b-input type="text"
+            v-model="name"
+            placeholder="Pseudo"
+            ></b-input>
         </b-field>
 
         <b-field label="Email">
             <b-input type="email"
-                v-model="email"
-                value="john@"
-                maxlength="30">
+              placeholder=" JohnDoe@gmail.com"
+              v-model="email"
+              value="john@"
+              maxlength="30">
             </b-input>
        </b-field>
 
-        <b-field label="Password">
+        <b-field label="Mot de passe">
             <b-input type="password"
-                v-model="password"
-                value="iwantmytreasure"
-                password-reveal>
+              placeholder=" 6 caratères minimum"
+              v-model="password"
+              value="iwantmytreasure"
+              password-reveal>
             </b-input>
         </b-field>
         <br>

@@ -38,7 +38,7 @@
           </l-marker>
         </l-map>
       </div>
-      <div class="buttons" @click="addTour()" >
+      <div class="buttons addTourBtn" @click="addTour()" >
         <a class="button is-primary">
             <strong>Créer le tour</strong>
         </a>
@@ -190,6 +190,9 @@ export default {
   .item{
     padding: .3rem 0;
   }
+}
+.addTourBtn{
+  padding-top: 2rem;
 }
 .innerTour{
 height: 600px;

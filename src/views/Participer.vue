@@ -37,7 +37,7 @@ export default {
   },
   firestore() {
     return {
-      tours: db.collection('Tour'),
+      tours: db.collection('Tour').orderBy("created_at", "desc"),
     }
   },
   data() {
@@ -81,7 +81,9 @@ export default {
   justify-content: center;
   padding-bottom: 1rem;
 }
-
+h1{
+  padding: 0 .5rem !important;
+}
 .liste-tour{
   width: 90%;
   padding: 2rem;
@@ -132,7 +134,7 @@ export default {
      padding-left: 1rem;
      h3{
        text-align: start;
-       font-size: 1.5rem;
+       font-size: 1.3rem;
        padding-right: 1rem;
      }
      p{

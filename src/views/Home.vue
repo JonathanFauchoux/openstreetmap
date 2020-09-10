@@ -55,7 +55,7 @@ export default {
   },
   firestore() {
       return {
-        listeResultats: db.collection('tourFini'),
+        listeResultats: db.collection('tourFini').orderBy("dateFin", "desc"),
       }
     },
   methods:{ 

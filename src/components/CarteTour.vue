@@ -48,7 +48,7 @@
           </li>
         <li v-for="(marker, index) in markers"
         class="item" 
-            :key="index" ><strong>Marker {{index +1 }} :</strong> Coordonées / Latitude:{{marker.lat}}   Longitude:{{marker.lng}}</li>
+            :key="index" ><strong>Marker {{index +1 }} :</strong> Coordonées / Lat:{{marker.lat}}   Lng:{{marker.lng}}</li>
       </ul>
       </div>
       
@@ -182,7 +182,7 @@ width: 100%
 .showTour{
   position: relative;
   top: -50px;
-  left: 35%;
+  left: 32%;
 }
 .leaflet-container{
   margin-bottom: 2rem;

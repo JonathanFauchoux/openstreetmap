@@ -6,17 +6,18 @@
 
         <b-field label="Email">
             <b-input type="email"
-                v-model="email"
-                value="john@"
-                maxlength="30">
+              placeholder=" JohnDoe@gmail.com"
+              v-model="email"
+              value="john@"
+              maxlength="30">
             </b-input>
        </b-field>
 
-        <b-field label="Password">
+        <b-field label="Mot de passe">
             <b-input type="password"
-                v-model="password"
-                value="iwantmytreasure"
-                password-reveal>
+              v-model="password"
+              value="iwantmytreasure"
+              password-reveal>
             </b-input>
         </b-field>
         <br>
