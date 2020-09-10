@@ -160,6 +160,7 @@ export default {
   height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start !important;
     align-items: center;
     padding: 0 2rem;
 }
