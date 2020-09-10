@@ -27,7 +27,7 @@
         <template slot="end" class="right">
             <h3>Hello, {{this.user}}</h3>
             <b-navbar-item tag="div">
-                <div class="buttons" @click="logOut">
+                <div class="buttons logOut" @click="logOut">
                     <a class="button is-primary">
                         <strong>Se deconnecter</strong>
                     </a>
@@ -68,5 +68,8 @@ data (){
 }
 .button{
     color: white !important;
+}
+.logOut{
+    width: 80% !important;
 }
 </style>

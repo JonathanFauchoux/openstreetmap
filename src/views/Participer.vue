@@ -55,7 +55,7 @@ export default {
       }
   },
   created(){
-    console.log(this.tours)
+   // console.log(this.tours)
   }
 }
 </script>
@@ -129,6 +129,7 @@ export default {
    .tourTitle{
      align-items: center;
      justify-content: flex-start;
+     padding-left: 1rem;
      h3{
        text-align: start;
        font-size: 1.5rem;

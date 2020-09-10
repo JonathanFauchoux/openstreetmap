@@ -20,7 +20,11 @@
             </b-input>
         </b-field>
         <br>
-        <b-button @click="login">se connecter</b-button>
+         <div class="buttons signUpBtn" @click="login()" >
+          <a class="button is-primary is-outlined">
+              <strong>Se connecter</strong>
+          </a>
+        </div>
         <br>
         <br>
         <p>besoin d'une inscription ? <router-link to="/signup">s'inscrire</router-link></p>

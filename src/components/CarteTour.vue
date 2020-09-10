@@ -63,7 +63,6 @@ import { latLng } from "leaflet";
 import { LMap, LTileLayer, LMarker } from "vue2-leaflet";
 import { Icon } from 'leaflet';
 
-import { db } from '../firebase';
 
 
 export default {
@@ -77,16 +76,18 @@ export default {
   },
   data() {
     return {
+      markers: JSON.parse(this.tour.markers),
+     
       currentTour : this.tour,
       date : new Date(),
-      zoom: 12,
-      center: latLng(50.471156, 4.42841),
+      zoom: 8,
+      center: latLng(50.671156, 4.42841),
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      currentZoom: 10,
-      currentCenter: latLng(50.471156, 4.42841),
+      currentZoom: 8,
+      currentCenter: latLng(50.671156, 4.42841),
       showParagraph: false,
-      markers: JSON.parse(this.tour.markers),
+     
       user : localStorage.getItem("username"),
       show: false
     };
@@ -96,7 +97,7 @@ export default {
     // this.$router.push({name:"Tour", params:{tour : this.currentTour}})
      localStorage.setItem('Tour',  JSON.stringify(this.currentTour))
      this.$router.push('/tour')
-     console.log('data', this.currentTour)
+     //console.log('data', this.currentTour)
    },
     zoomUpdate(zoom) {
       this.currentZoom = zoom;
@@ -113,21 +114,9 @@ export default {
     },
     addMarker(event) {
       this.markers.push(event.latlng);
-      //console.log(this.markers)
+     
     },
-    addTour(){
-      let newTour = {user: this.user, markers: this.markers}
-      let markersString = JSON.stringify(this.markers)
-      //console.log(newTour)
-      db.collection('Tour').add({
-        user: this.user,
-        markers: markersString,
-        created_at : this.date
-      })
-      
-      localStorage.setItem('Tour',  JSON.stringify(newTour))
-      this.markers = []
-    }
+    
   },
   created(){
     delete Icon.Default.prototype._getIconUrl;
@@ -136,7 +125,9 @@ export default {
     iconUrl: require('leaflet/dist/images/marker-icon.png'),
     shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
     });
-    //console.log(JSON.parse(this.tour.markers))
+    //let firstMarker = JSON.parse(this.currentTour.markers[0])
+    //console.log(JSON.parse(this.tour.markers[0].lat))
+   
   }
 }
 </script>
@@ -190,8 +181,8 @@ width: 100%
 }
 .showTour{
   position: relative;
-  top: -35px;
-  left: 40%;
+  top: -50px;
+  left: 35%;
 }
 .leaflet-container{
   margin-bottom: 2rem;

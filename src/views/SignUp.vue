@@ -3,7 +3,7 @@
      <div class="form">
         <h2 class="titleLog"> S'inscrire</h2>
          <b-field label="Name">
-            <b-input v-model="name"></b-input>
+            <b-input type="text" v-model="name"></b-input>
         </b-field>
 
         <b-field label="Email">
@@ -22,16 +22,20 @@
             </b-input>
         </b-field>
         <br>
-        <b-button @click="signUp">S'inscrire</b-button>
+        <div class="buttons signUpBtn" @click="signUp()" >
+          <a class="button is-primary is-outlined">
+              <strong>S'inscrire</strong>
+          </a>
+        </div>
         <br>
         <br>
         <p>Dejà inscrit ? <router-link to="/">Se connecter</router-link></p>
 
-        <ul class="reptileList">
+        <!-- <ul class="reptileList">
           <li v-for="user in users" :key=user.name >
             {{ user.name }}
           </li>
-        </ul>
+        </ul> -->
  
      </div>
        
@@ -106,5 +110,9 @@ export default {
 
   max-width: 600px;
   width: 100% !important;
+}
+.signUpBtn{
+  display: flex;
+  justify-content: center !important;
 }
 </style>

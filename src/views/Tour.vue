@@ -8,7 +8,7 @@
 
       <div class="tour">
         <div class="tourTitle">
-          <h3>Tour de : {{this.currentTour.user}}</h3> 
+          <h3><strong>Tour de : {{this.currentTour.user}}</strong></h3> 
         </div>
           
           <div class="innerTour"  >
@@ -42,6 +42,7 @@
             :lat-lng="this.userPosition"
             >
             <l-icon
+              
               icon-url='https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png'
              />
             </l-marker>
@@ -193,7 +194,7 @@ export default {
 
 <style lang="scss" scoped>
 .participer{
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -276,6 +277,12 @@ export default {
   }
 }
 @media screen and (max-width: 900px){
+  .participer{
+    width: 100%;
+  }
+  .leaflet-container{
+    height: 100% !important;
+  }
   .liste-tour{
     width: 100%;
     padding: 1rem;

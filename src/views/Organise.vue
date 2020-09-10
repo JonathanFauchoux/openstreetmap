@@ -45,8 +45,11 @@
       </div>
       <ul class="listMarkers">
         <li v-for="(marker, index) in markers"
-        class="item" 
-            :key="index" ><strong>Marker {{index +1 }} :</strong> Coordonées / Latitude:{{marker.lat}}   Longitude:{{marker.lng}}</li>
+          class="item" 
+          :key="index" >
+          <strong>Marker {{index +1 }} :</strong>
+          Coordonées / Latitude:{{marker.lat}}   Longitude:{{marker.lng}}
+        </li>
       </ul>
        <Footer />
     </div>
@@ -110,7 +113,7 @@ export default {
     },
     addMarker(event) {
       this.markers.push(event.latlng);
-      console.log(this.markers)
+      //console.log(this.markers)
     },
     addTour(){
       let newTour = {user: this.user, markers: this.markers}
@@ -127,7 +130,7 @@ export default {
     },
     maPosition(position) {
       this.userPosition = {lat: position.coords.latitude, lng: position.coords.longitude} 
-      console.log("thisuserposition",this.userPosition.lng)
+      //console.log("thisuserposition",this.userPosition.lng)
       this.markers= [
         latLng(position.coords.latitude, position.coords.longitude), 
       ]
@@ -138,7 +141,7 @@ export default {
   mounted(){
     if(navigator.geolocation)
     navigator.geolocation.getCurrentPosition(this.maPosition)
-    console.log("maposition", this.userPosition)
+    //console.log("maposition", this.userPosition)
   },
   created(){
     delete Icon.Default.prototype._getIconUrl;
