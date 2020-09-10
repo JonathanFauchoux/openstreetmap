@@ -66,6 +66,11 @@
           
           <li class="theEnd" v-if="this.markers.length == 0">
               <h2 class="title"> Parcours fini !</h2>
+              <div class="buttons validBtn" >
+              <a class="button is-primary" @click="goHome()">
+                  <strong>Home / resultats</strong>
+              </a>
+            </div>
               <img src="https://images.unsplash.com/photo-1436076863939-06870fe779c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="image victoire">
           </li>
 
@@ -84,7 +89,7 @@
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 //import CarteTour from '../components/CarteTour'
-//import { db } from '../firebase';
+import { db } from '../firebase';
 
 import { LMap, LTileLayer, LMarker, LIcon } from "vue2-leaflet";
 import { latLng, Icon } from "leaflet";
@@ -111,11 +116,11 @@ export default {
       show: false,
       currentTour : {},
       date : new Date(),
-      zoom: 16,
+      zoom: 15,
       center: latLng(50.471156, 4.42841),
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      currentZoom: 9,
+      currentZoom: 10,
       currentCenter: latLng(50.471156, 4.42841),
       showParagraph: false,
       markers: [],
@@ -124,18 +129,29 @@ export default {
     }
   },
    methods: {
+     goHome(){
+       this.$router.push('/home')
+     },
     checkMarker(){
       for(let i=0; i < this.markers.length; i++){
         if( (this.markers[i].lat).toFixed(4) == (this.UserPositionLat).toFixed(4) && (this.markers[i].lng).toFixed(4) == (this.UserPositionLng).toFixed(4)){
-          console.log('true')
-          console.log((this.markers[0].lat).toFixed(5))
+          //console.log('true')
+          //console.log((this.markers[0].lat).toFixed(5))
           this.$buefy.toast.open({type: "is-success" ,message : 'Marker validé !'})
           this.markers.splice(this.markers[i],1)
-          if(this.markers.length == 0){ console.log("le tour est fini")}
+          if(this.markers.length == 0){ 
+            console.log("le tour est fini")
+            db.collection('tourFini').add({
+              organisateur: this.currentTour.user,
+              dateTour: this.currentTour.created_at,
+              participant: this.user,
+              dateFin: new Date()
+         })
+          }
           
         }
         else{
-          console.log('false')
+         // console.log('false')
           this.$buefy.toast.open({type: "is-danger" ,message : 'Trop loin du marker'}).stop
          // console.log(this.markers[0].lat)
         }
@@ -183,7 +199,7 @@ export default {
   
     this.currentTour = JSON.parse(localStorage.getItem('Tour'))
     this.markers = JSON.parse(this.currentTour.markers)
-    console.log(this.currentTour)
+    //§console.log(this.currentTour)
      this.userPositionUpdate()
   },
   Destroyed(){

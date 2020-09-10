@@ -28,7 +28,7 @@
             <h3>Hello, {{this.user}}</h3>
             <b-navbar-item tag="div">
                 <div class="buttons logOut" @click="logOut">
-                    <a class="button is-primary">
+                    <a class="button is-primary is-outlined">
                         <strong>Se deconnecter</strong>
                     </a>
                 </div>
@@ -67,7 +67,10 @@ data (){
     padding-right: 1rem;
 }
 .button{
-    color: white !important;
+    color: hsl(271, 100%, 71%) !important;
+    :hover{
+        color: white !important;
+    }
 }
 .logOut{
     width: 80% !important;
